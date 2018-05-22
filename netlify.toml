@@ -1,0 +1,29 @@
+[Settings]
+  ID = "warpr"
+
+# Settings in the [build] context are global and are applied to all contexts unless otherwise overridden by more specific contexts.  
+
+[build]
+# This is the directory to change to before starting a build. 
+  base    = "."
+  # NOTE: This is where we will look for package.json/.nvmrc/etc, not root.
+# This is the directory that you are publishing from (relative to root of your repo)
+  publish = "."
+# This will be your default build command
+  command = "" 
+  
+[[redirects]]
+  from = "https://warpr.netlify.com/*"
+  to = "https://warpr.io/:splat"
+  status = 301
+  force = true
+
+[[headers]]
+  for = "/*"
+[headers.values]
+  Content-Security-Policy = "default-src https:"
+  X-Frame-Options = "DENY"
+  X-XSS-Protection = "1; mode=block"
+  X-Content-Type-Options = "nosniff"
+  Referrer-Policy = "no-referrer"
+
